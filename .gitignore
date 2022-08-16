@@ -144,7 +144,6 @@ data
 !data/k-shot/checksum
 log*
 runs
-result
 wandb
 ensemble_predict_results
 auto*
