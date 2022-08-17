@@ -115,9 +115,13 @@ def main():
             args.key = 'smsa_dev_eval_f1'
             args.test_key = 'smsa_test_eval_f1'
             print_name = condition['task_name']
-        elif condition['task_name'] == 'smsa/f1':
-            args.key = 'smsa_dev_eval_f1'
-            args.test_key = 'smsa_test_eval_f1'
+        elif condition['task_name'] == 'emot':
+            args.key = 'emot_dev_eval_f1'
+            args.test_key = 'emot_test_eval_f1'
+            print_name = condition['task_name']
+        elif condition['task_name'] == 'wrete':
+            args.key = 'wrete_dev_eval_f1'
+            args.test_key = 'wrete_test_eval_f1'
             print_name = condition['task_name']
         elif condition['task_name'] == 'subj':
             args.key = 'subj_dev_eval_acc'

@@ -464,7 +464,7 @@ class WnliProcessor(DataProcessor):
 
 class TextClassificationProcessor(DataProcessor):
     """
-    Data processor for text classification datasets (mr, sst-5, smsa, subj, trec, cr, mpqa).
+    Data processor for text classification datasets (mr, sst-5, smsa, emot, wrete, subj, trec, cr, mpqa).
     """
 
     def __init__(self, task_name):
@@ -499,6 +499,10 @@ class TextClassificationProcessor(DataProcessor):
             return list(range(5))
         elif self.task_name == "smsa":
             return list(range(3))
+        elif self.task_name == "emot":
+            return list(range(5))
+        elif self.task_name == "wrete":
+            return list(range(2))
         elif self.task_name == "subj":
             return list(range(2))
         elif self.task_name == "trec":
@@ -526,7 +530,7 @@ class TextClassificationProcessor(DataProcessor):
                 if not pd.isna(line[3]):
                     text += ' ' + line[3]
                 examples.append(InputExample(guid=guid, text_a=text, short_text=line[1], label=line[0])) 
-            elif self.task_name in ['mr', 'sst-5', 'smsa', 'subj', 'trec', 'cr', 'mpqa']:
+            elif self.task_name in ['mr', 'sst-5', 'smsa', 'emot', 'wrete', 'subj', 'trec', 'cr', 'mpqa']:
                 examples.append(InputExample(guid=guid, text_a=line[1], label=line[0]))
             else:
                 raise Exception("Task_name not supported.")
@@ -566,6 +570,8 @@ processors_mapping = {
     "mr": TextClassificationProcessor("mr"),
     "sst-5": TextClassificationProcessor("sst-5"),
     "smsa": TextClassificationProcessor("smsa"),
+    "emot": TextClassificationProcessor("emot"),
+    "wrete": TextClassificationProcessor("wrete"),
     "subj": TextClassificationProcessor("subj"),
     "trec": TextClassificationProcessor("trec"),
     "cr": TextClassificationProcessor("cr"),
@@ -586,6 +592,8 @@ num_labels_mapping = {
     "mr": 2,
     "sst-5": 5,
     "smsa": 3,
+    "emot": 5,
+    "emot": 2,
     "subj": 2,
     "trec": 6,
     "cr": 2,
@@ -607,6 +615,8 @@ output_modes_mapping = {
     "mr": "classification",
     "sst-5": "classification",
     "smsa": "classification",
+    "emot": "classification",
+    "wrete": "classification",
     "subj": "classification",
     "trec": "classification",
     "cr": "classification",
@@ -629,6 +639,8 @@ compute_metrics_mapping = {
     "mr": text_classification_metrics,
     "sst-5": text_classification_metrics,
     "smsa": text_classification_metrics,
+    "emot": text_classification_metrics,
+    "wrete": text_classification_metrics,
     "subj": text_classification_metrics,
     "trec": text_classification_metrics,
     "cr": text_classification_metrics,
