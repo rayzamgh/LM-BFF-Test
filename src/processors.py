@@ -593,7 +593,7 @@ num_labels_mapping = {
     "sst-5": 5,
     "smsa": 3,
     "emot": 5,
-    "emot": 2,
+    "wrete": 2,
     "subj": 2,
     "trec": 6,
     "cr": 2,
