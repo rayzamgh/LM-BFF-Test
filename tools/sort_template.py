@@ -107,6 +107,10 @@ def main():
             args.key = 'sst-5_dev_eval_acc'
             args.test_key = 'sst-5_test_eval_acc'
             print_name = condition['task_name']
+        elif condition['task_name'] == 'smsa':
+            args.key = 'smsa_dev_eval_acc'
+            args.test_key = 'smsa_test_eval_acc'
+            print_name = condition['task_name']
         elif condition['task_name'] == 'subj':
             args.key = 'subj_dev_eval_acc'
             args.test_key = 'subj_test_eval_acc'
