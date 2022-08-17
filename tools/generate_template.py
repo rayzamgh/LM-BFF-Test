@@ -271,7 +271,7 @@ def search_template(model, tokenizer, task_name, k, seed, beam, output_dir, data
     map_of_mapping = {
         'SST-2': {'0':'terrible','1':'great'},
         'sst-5': {0:'terrible',1:'bad',2:'okay',3:'good',4:'great'},
-        'smsa': {'positive':'positive','neutral':'neutral','negative':'negative'},
+        'smsa': {'positive':'positif','neutral':'netral','negative':'negatif'},
         'mr': {0:'terrible',1:'great'},
         'cr': {0:'terrible',1:'great'},
         'subj': {0:'subjective',1:'objective'},
