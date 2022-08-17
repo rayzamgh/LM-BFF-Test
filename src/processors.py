@@ -15,6 +15,7 @@ from transformers.data.processors.utils import InputFeatures
 from transformers import DataProcessor, InputExample
 from transformers.data.processors.glue import *
 from transformers.data.metrics import glue_compute_metrics
+from sklearn.metrics import f1_score
 import dataclasses
 from dataclasses import dataclass, asdict
 from typing import List, Optional, Union
@@ -533,7 +534,20 @@ class TextClassificationProcessor(DataProcessor):
         return examples
         
 def text_classification_metrics(task_name, preds, labels):
-    return {"acc": (preds == labels).mean()}
+    def _simple_accuracy(preds, labels):
+        return (preds == labels).mean()
+
+
+    def _acc_and_f1(preds, labels):
+        acc = _simple_accuracy(preds, labels)
+        f1 = f1_score(y_true=labels, y_pred=preds)
+        return {
+            "acc": acc,
+            "f1": f1,
+            "acc_and_f1": (acc + f1) / 2,
+        }
+
+    return _acc_and_f1(preds, labels)
 
 # Add your task to the following mappings
 
