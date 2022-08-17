@@ -79,7 +79,7 @@ def main():
     parser.add_argument("--k", type=int, default=16,
         help="Training examples for each class.")
     parser.add_argument("--task", type=str, nargs="+", 
-        default=['SST-2', 'sst-5', 'smsa', 'emot','wrete','mr', 'cr', 'mpqa', 'subj', 'trec', 'CoLA', 'MRPC', 'QQP', 'STS-B', 'MNLI', 'SNLI', 'QNLI', 'RTE'],
+        default=['smsa', 'emot','wrete'],
         help="Task names")
     parser.add_argument("--seed", type=int, nargs="+", 
         default=[100, 13, 21, 42, 87],
