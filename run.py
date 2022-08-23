@@ -432,6 +432,9 @@ def main():
         cache_dir=model_args.cache_dir,
     )
 
+    print("CONFIG")
+    print(config)
+
     if 'prompt' in model_args.few_shot_type:
         if config.model_type == 'roberta':
             model_fn = RobertaForPromptFinetuning
