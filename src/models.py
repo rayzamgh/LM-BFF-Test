@@ -3,10 +3,10 @@
 import torch
 import torch.nn as nn
 import transformers
-# from transformers.modeling_bert import BertPreTrainedModel, BertForSequenceClassification, BertModel, BertOnlyMLMHead
+from transformers.modeling_bert import BertOnlyMLMHead
 from transformers.modeling_roberta import RobertaForSequenceClassification, RobertaModel, RobertaLMHead, RobertaClassificationHead
 from transformers.modeling_outputs import SequenceClassifierOutput
-from transformers import BertPreTrainedModel, BertForSequenceClassification, BertModel, BertOnlyMLMHead
+from transformers import BertPreTrainedModel, BertForSequenceClassification, BertModel
 
 import logging
 logger = logging.getLogger(__name__)
