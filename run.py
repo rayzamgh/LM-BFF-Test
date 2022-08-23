@@ -447,9 +447,6 @@ def main():
         raise NotImplementedError
     special_tokens = []
 
-    print("PETNINGPETNINGPETNINGPETNINGPETNINGPETNINGPETNINGPETNINGPETNINGPETNINGPETNINGPETNINGconfig.model_type")
-    print(config.model_type)
-
     # Create tokenizer
     tokenizer = AutoTokenizer.from_pretrained(
         model_args.tokenizer_name if model_args.tokenizer_name else model_args.model_name_or_path,
