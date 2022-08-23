@@ -426,16 +426,13 @@ def main():
                 data_args.template = new_template
 
     # Create config
-    # config = AutoConfig.from_pretrained(
-    #     model_args.config_name if model_args.config_name else model_args.model_name_or_path,
-    #     num_labels=num_labels,
-    #     finetuning_task=data_args.task_name,
-    #     cache_dir=model_args.cache_dir,
-    # )
-    config = BertConfig.from_pretrained(model_args.model_name_or_path, vocab_size=30521)
-    config.num_labels = num_labels
-    finetuning_task=data_args.task_name,
-    cache_dir=model_args.cache_dir,
+    config = AutoConfig.from_pretrained(
+        model_args.config_name if model_args.config_name else model_args.model_name_or_path,
+        num_labels=num_labels,
+        finetuning_task=data_args.task_name,
+        cache_dir=model_args.cache_dir, 
+        vocab_size=30521
+    )
 
     if 'prompt' in model_args.few_shot_type:
         if config.model_type == 'roberta':
