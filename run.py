@@ -481,12 +481,13 @@ def main():
     print("from_tf")
     print(bool(".ckpt" in model_args.model_name_or_path))
 
-    model = model_fn.from_pretrained(
-        model_args.model_name_or_path,
-        from_tf=bool(".ckpt" in model_args.model_name_or_path),
-        config=config,
-        cache_dir=model_args.cache_dir,
-    )
+    # model = model_fn.from_pretrained(
+    #     model_args.model_name_or_path,
+    #     from_tf=bool(".ckpt" in model_args.model_name_or_path),
+    #     config=config,
+    #     cache_dir=model_args.cache_dir,
+    # )
+    model = model_fn.from_pretrained('indobenchmark/indobert-base-p1', config=config)
 
 
     # For BERT, increase the size of the segment (token type) embeddings
