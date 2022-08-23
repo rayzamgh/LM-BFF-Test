@@ -470,7 +470,7 @@ def main():
 
     set_seed(training_args.seed)
 
-    config.vocab_size = 530521
+    config.vocab_size = 30521
 
     print("configconfigconfigconfigconfigconfigconfigconfigconfigconfig")
     print(config)
