@@ -436,7 +436,7 @@ def main():
     print(config)
 
     if 'prompt' in model_args.few_shot_type:
-        if config.model_type == 'roberta':
+        if config.model_type in ['xlm-roberta', 'roberta']:
             model_fn = RobertaForPromptFinetuning
         elif config.model_type == 'bert':
             model_fn = BertForPromptFinetuning
