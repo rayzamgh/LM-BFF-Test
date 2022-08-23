@@ -14,7 +14,6 @@ import transformers
 from transformers import AutoConfig, AutoModelForSequenceClassification, AutoTokenizer, EvalPrediction
 from transformers import GlueDataTrainingArguments as DataTrainingArguments
 from transformers import HfArgumentParser, TrainingArguments, set_seed
-from transformers import BertForSequenceClassification, BertConfig, BertTokenizer
 
 from src.dataset import FewShotDataset
 from src.models import BertForPromptFinetuning, RobertaForPromptFinetuning, resize_token_type_embeddings
@@ -426,18 +425,12 @@ def main():
                 data_args.template = new_template
 
     # Create config
-    # config = AutoConfig.from_pretrained(
-    #     model_args.config_name if model_args.config_name else model_args.model_name_or_path,
-    #     num_labels=num_labels,
-    #     finetuning_task=data_args.task_name,
-    #     cache_dir=model_args.cache_dir,
-    #     vocab_size = 30521
-    # )
-
-    config = BertConfig.from_pretrained(model_args.model_name_or_path, vocab_size = 50000)
-    config.num_labels = num_labels
-    config.finetuning_task=data_args.task_name
-    config.cache_dir=model_args.cache_dir
+    config = AutoConfig.from_pretrained(
+        model_args.config_name if model_args.config_name else model_args.model_name_or_path,
+        num_labels=num_labels,
+        finetuning_task=data_args.task_name,
+        cache_dir=model_args.cache_dir,
+    )
 
     if 'prompt' in model_args.few_shot_type:
         if config.model_type == 'roberta':
@@ -476,18 +469,12 @@ def main():
 
     set_seed(training_args.seed)
 
-    print("configconfigconfigconfigconfigconfig")
-    print(config)
-    print("from_tf")
-    print(bool(".ckpt" in model_args.model_name_or_path))
-
     model = model_fn.from_pretrained(
         model_args.model_name_or_path,
         from_tf=bool(".ckpt" in model_args.model_name_or_path),
         config=config,
         cache_dir=model_args.cache_dir,
     )
-
 
     # For BERT, increase the size of the segment (token type) embeddings
     if config.model_type == 'bert':
@@ -551,19 +538,8 @@ def main():
             torch.save(model_args, os.path.join(training_args.output_dir, "model_args.bin"))
             torch.save(data_args, os.path.join(training_args.output_dir, "data_args.bin"))
         
-        config = BertConfig.from_pretrained(model_args.model_name_or_path, vocab_size = 30521)
-        config.num_labels = num_labels
-        config.finetuning_task=data_args.task_name
-        config.cache_dir=model_args.cache_dir
-
-        print("training_args.output_dir")
-        print(training_args.output_dir)
-
-        print("config")
-        print(config)
-        
         # Reload the best checkpoint (for eval)
-        model = model_fn.from_pretrained(training_args.output_dir, config=config)
+        model = model_fn.from_pretrained(training_args.output_dir)
         model = model.to(training_args.device)
         trainer.model = model
         if data_args.prompt:

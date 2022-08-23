@@ -271,9 +271,9 @@ def search_template(model, tokenizer, task_name, k, seed, beam, output_dir, data
     map_of_mapping = {
         'SST-2': {'0':'terrible','1':'great'},
         'sst-5': {0:'terrible',1:'bad',2:'okay',3:'good',4:'great'},
-        'smsa': {0:'positif',1:'negatif',2:'netral'},
-        'emot': {0:'sadness',1:'fear',2:'anger',3:'love',4:'happy'},
-        'wrete': {0:'No',1:'Yes'},
+        'smsa': {0:'positif',1:'negatif',2:'neutral'},
+        'emot': {0:'sedih',1:'takut',2:'marah',3:'cinta',4:'senang'},
+        'wrete': {0:'salah',1:'benar'},
         'mr': {0:'terrible',1:'great'},
         'cr': {0:'terrible',1:'great'},
         'subj': {0:'subjective',1:'objective'},
