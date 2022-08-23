@@ -551,6 +551,17 @@ def main():
             torch.save(model_args, os.path.join(training_args.output_dir, "model_args.bin"))
             torch.save(data_args, os.path.join(training_args.output_dir, "data_args.bin"))
         
+        config = BertConfig.from_pretrained(model_args.model_name_or_path, vocab_size = 30521)
+        config.num_labels = num_labels
+        config.finetuning_task=data_args.task_name
+        config.cache_dir=model_args.cache_dir
+
+        print("training_args.output_dir")
+        print(training_args.output_dir)
+
+        print("config")
+        print(config)
+        
         # Reload the best checkpoint (for eval)
         model = model_fn.from_pretrained(training_args.output_dir, config=config)
         model = model.to(training_args.device)
