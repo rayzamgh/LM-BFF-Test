@@ -430,7 +430,8 @@ def main():
         model_args.config_name if model_args.config_name else model_args.model_name_or_path,
         num_labels=num_labels,
         finetuning_task=data_args.task_name,
-        cache_dir=model_args.cache_dir
+        cache_dir=model_args.cache_dir,
+        vocab_size = 30521
     )
 
     if 'prompt' in model_args.few_shot_type:
@@ -470,7 +471,6 @@ def main():
 
     set_seed(training_args.seed)
 
-    config.vocab_size = 30521
 
     print("configconfigconfigconfigconfigconfigconfigconfigconfigconfig")
     print(config)
