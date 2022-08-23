@@ -434,7 +434,7 @@ def main():
     #     vocab_size = 30521
     # )
 
-    config = BertConfig.from_pretrained(model_args.model_name_or_path, vocab_size = 30521)
+    config = BertConfig.from_pretrained(model_args.model_name_or_path)
     config.num_labels = num_labels
     config.finetuning_task=data_args.task_name
     config.cache_dir=model_args.cache_dir
@@ -481,13 +481,12 @@ def main():
     print("from_tf")
     print(bool(".ckpt" in model_args.model_name_or_path))
 
-    # model = model_fn.from_pretrained(
-    #     model_args.model_name_or_path,
-    #     from_tf=bool(".ckpt" in model_args.model_name_or_path),
-    #     config=config,
-    #     cache_dir=model_args.cache_dir,
-    # )
-    model = model_fn.from_pretrained('indobenchmark/indobert-base-p1', config=config)
+    model = model_fn.from_pretrained(
+        model_args.model_name_or_path,
+        from_tf=bool(".ckpt" in model_args.model_name_or_path),
+        config=config,
+        cache_dir=model_args.cache_dir,
+    )
 
 
     # For BERT, increase the size of the segment (token type) embeddings
