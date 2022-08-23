@@ -436,8 +436,8 @@ def main():
 
     config = BertConfig.from_pretrained(model_args.model_name_or_path, vocab_size = 30521)
     config.num_labels = num_labels
-    config.finetuning_task=data_args.task_name,
-    config.cache_dir=model_args.cache_dir,
+    config.finetuning_task=data_args.task_name
+    config.cache_dir=model_args.cache_dir
 
     if 'prompt' in model_args.few_shot_type:
         if config.model_type == 'roberta':
@@ -475,6 +475,11 @@ def main():
     )
 
     set_seed(training_args.seed)
+
+    print("configconfigconfigconfigconfigconfig")
+    print(config)
+    print("from_tf")
+    print(bool(".ckpt" in model_args.model_name_or_path))
 
     model = model_fn.from_pretrained(
         model_args.model_name_or_path,
