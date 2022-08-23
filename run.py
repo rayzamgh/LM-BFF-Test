@@ -14,6 +14,7 @@ import transformers
 from transformers import AutoConfig, AutoModelForSequenceClassification, AutoTokenizer, EvalPrediction
 from transformers import GlueDataTrainingArguments as DataTrainingArguments
 from transformers import HfArgumentParser, TrainingArguments, set_seed
+from transformers import BertForSequenceClassification, BertConfig, BertTokenizer
 
 from src.dataset import FewShotDataset
 from src.models import BertForPromptFinetuning, RobertaForPromptFinetuning, resize_token_type_embeddings
@@ -446,11 +447,13 @@ def main():
     special_tokens = []
 
     # Create tokenizer
-    tokenizer = AutoTokenizer.from_pretrained(
-        model_args.tokenizer_name if model_args.tokenizer_name else model_args.model_name_or_path,
-        additional_special_tokens=special_tokens,
-        cache_dir=model_args.cache_dir,
-    )
+    # tokenizer = AutoTokenizer.from_pretrained(
+    #     model_args.tokenizer_name if model_args.tokenizer_name else model_args.model_name_or_path,
+    #     additional_special_tokens=special_tokens,
+    #     cache_dir=model_args.cache_dir,
+    # )
+
+    tokenizer = BertTokenizer.from_pretrained('indobenchmark/indobert-base-p1')
 
     # Get our special datasets.
     train_dataset = (
