@@ -432,10 +432,10 @@ def main():
     #     finetuning_task=data_args.task_name,
     #     cache_dir=model_args.cache_dir,
     # )
-    config = BertConfig.from_pretrained(model_args.model_name_or_path)
+    config = BertConfig.from_pretrained(model_args.model_name_or_path, vocab_size=30521)
     config.num_labels = num_labels
-    config.finetuning_task=data_args.task_name,
-    config.cache_dir=model_args.cache_dir,
+    finetuning_task=data_args.task_name,
+    cache_dir=model_args.cache_dir,
 
     if 'prompt' in model_args.few_shot_type:
         if config.model_type == 'roberta':
