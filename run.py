@@ -448,13 +448,11 @@ def main():
     special_tokens = []
 
     # Create tokenizer
-    # tokenizer = AutoTokenizer.from_pretrained(
-    #     model_args.tokenizer_name if model_args.tokenizer_name else model_args.model_name_or_path,
-    #     additional_special_tokens=special_tokens,
-    #     cache_dir=model_args.cache_dir,
-    # )
-
-    tokenizer = BertTokenizer.from_pretrained('indobenchmark/indobert-base-p1')
+    tokenizer = AutoTokenizer.from_pretrained(
+        model_args.tokenizer_name if model_args.tokenizer_name else model_args.model_name_or_path,
+        additional_special_tokens=special_tokens,
+        cache_dir=model_args.cache_dir,
+    )
 
     # Get our special datasets.
     train_dataset = (
