@@ -478,10 +478,10 @@ def main():
         cache_dir=model_args.cache_dir,
     )
 
-    # For BERT, increase the size of the segment (token type) embeddings
-    if config.model_type == 'bert':
-        model.resize_token_embeddings(len(tokenizer))
-        resize_token_type_embeddings(model, new_num_types=10, random_segment=model_args.random_segment)
+    # # For BERT, increase the size of the segment (token type) embeddings
+    # if config.model_type == 'bert':
+    #     model.resize_token_embeddings(len(tokenizer))
+    #     resize_token_type_embeddings(model, new_num_types=10, random_segment=model_args.random_segment)
 
     # Pass dataset and argument information to the model
     if data_args.prompt:
