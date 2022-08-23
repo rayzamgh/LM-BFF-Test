@@ -29,7 +29,7 @@ def resize_token_type_embeddings(model, new_num_types: int, random_segment: bool
         raise NotImplementedError
 
 
-class BertForPromptFinetuning(BertForSequenceClassification):
+class BertForPromptFinetuning(BertPreTrainedModel):
 
     def __init__(self, config):
         super().__init__(config)
