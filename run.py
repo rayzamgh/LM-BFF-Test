@@ -447,6 +447,9 @@ def main():
         raise NotImplementedError
     special_tokens = []
 
+    print("PETNINGPETNINGPETNINGPETNINGPETNINGPETNINGPETNINGPETNINGPETNINGPETNINGPETNINGPETNINGconfig.model_type")
+    print(config.model_type)
+
     # Create tokenizer
     tokenizer = AutoTokenizer.from_pretrained(
         model_args.tokenizer_name if model_args.tokenizer_name else model_args.model_name_or_path,
@@ -477,9 +480,6 @@ def main():
         config=config,
         cache_dir=model_args.cache_dir,
     )
-
-    print("PETNINGPETNINGPETNINGPETNINGPETNINGPETNINGPETNINGPETNINGPETNINGPETNINGPETNINGPETNINGconfig.model_type")
-    print(config.model_type)
 
     # For BERT, increase the size of the segment (token type) embeddings
     if config.model_type == 'bert':
