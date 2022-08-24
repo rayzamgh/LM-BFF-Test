@@ -1,4 +1,4 @@
-eval_loss = 3.97788405418396
-eval_acc = 0.5
-eval_f1 = 0.4666666666666667
-eval_acc_and_f1 = 0.48333333333333334
+eval_loss = 3.6805613040924072
+eval_acc = 0.625
+eval_f1 = 0.625
+eval_acc_and_f1 = 0.625
