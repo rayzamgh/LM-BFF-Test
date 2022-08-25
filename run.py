@@ -542,6 +542,10 @@ def main():
         print("CONFIG")
         config.vocab_size = 50000
         print(config)
+        print("model_args")
+        print(model_args)
+        print("data_args")
+        print(data_args)
 
         model = model_fn.from_pretrained(training_args.output_dir, config=config)
         model = model.to(training_args.device)
