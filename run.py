@@ -539,8 +539,8 @@ def main():
             torch.save(data_args, os.path.join(training_args.output_dir, "data_args.bin"))
         
         # Reload the best checkpoint (for eval)
-        print("CONFIG")
-        config.vocab_size = 50000
+        # print("CONFIG")
+        # config.vocab_size = 50000
         print(config)
         print("model_args")
         print(model_args)
