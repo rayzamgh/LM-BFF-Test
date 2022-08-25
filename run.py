@@ -540,8 +540,8 @@ def main():
         
         # Reload the best checkpoint (for eval)
         print("CONFIG")
+        config.vocab_size = 50000
         print(config)
-        config.vocab_size = 11111
 
         model = model_fn.from_pretrained(training_args.output_dir, config=config)
         model = model.to(training_args.device)
