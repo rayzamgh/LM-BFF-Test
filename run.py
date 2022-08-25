@@ -432,9 +432,6 @@ def main():
         cache_dir=model_args.cache_dir,
     )
 
-    print("CONFIG")
-    print(config)
-
     if 'prompt' in model_args.few_shot_type:
         if config.model_type in ['xlm-roberta', 'roberta']:
             model_fn = RobertaForPromptFinetuning
@@ -542,7 +539,11 @@ def main():
             torch.save(data_args, os.path.join(training_args.output_dir, "data_args.bin"))
         
         # Reload the best checkpoint (for eval)
-        model = model_fn.from_pretrained(training_args.output_dir)
+        print("CONFIG")
+        print(config)
+        config.vocab_size = 11111
+
+        model = model_fn.from_pretrained(training_args.output_dir, config=config)
         model = model.to(training_args.device)
         trainer.model = model
         if data_args.prompt:
